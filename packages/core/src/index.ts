@@ -1,6 +1,6 @@
 export {
   computeColorValues,
-  defaultTheme,
+  crowdboticsTheme as defaultTheme,
   ElementColors,
   RelationshipColors,
 } from './colors'

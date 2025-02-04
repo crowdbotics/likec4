@@ -88,7 +88,7 @@ export function ReactLikeC4<
 type ReactLikeC4InnerProps = Omit<ReactLikeC4Props<any, any, any>, 'viewId'> & {
   view: DiagramView
 }
-function ReactLikeC4Inner({
+export function ReactLikeC4Inner({
   className,
   view,
   colorScheme: explicitColorScheme,
