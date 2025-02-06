@@ -1,21 +1,27 @@
-import type { DiagramView, WhereOperator } from '@likec4/core'
-import { type LikeC4DiagramProps, type OnNavigateTo, LikeC4Diagram, useLikeC4Model } from '@likec4/diagram'
-import clsx from 'clsx'
-import { type CSSProperties } from 'react'
-import { ShadowRoot } from './ShadowRoot'
+import type { DiagramView, WhereOperator } from "@likec4/core";
+import {
+  type LikeC4DiagramProps,
+  type OnNavigateTo,
+  useLikeC4Model,
+  LikeC4DiagramTest,
+  LikeC4Diagram as LikeC4DiagramReal,
+} from "@likec4/diagram";
+import clsx from "clsx";
+import { useContext, type CSSProperties } from "react";
+import { ShadowRoot } from "./ShadowRoot";
 
-import { isFunction, isString } from 'remeda'
-import { ShadowRootMantineProvider } from './ShadowRootMantineProvider'
-import { useColorScheme, useShadowRootStyle } from './style'
-import { cssLikeC4View } from './styles.css'
-import { ErrorMessage, ViewNotFound } from './ViewNotFound'
+import { isFunction, isString } from "remeda";
+import { ShadowRootMantineProvider } from "./ShadowRootMantineProvider";
+import { useColorScheme, useShadowRootStyle } from "./style";
+import { cssLikeC4View } from "./styles.css";
+import { ErrorMessage, ViewNotFound } from "./ViewNotFound";
+import { MantineContext } from "@mantine/core";
 
-export type ReactLikeC4Props<
-  ViewId = string,
-  Tag = string,
-  Kind = string,
-> = Omit<LikeC4DiagramProps, 'view' | 'where' | 'onNavigateTo'> & {
-  viewId: ViewId
+export type ReactLikeC4Props<ViewId = string, Tag = string, Kind = string> = Omit<
+  LikeC4DiagramProps,
+  "view" | "where" | "onNavigateTo"
+> & {
+  viewId: ViewId;
 
   /**
    * Keep aspect ratio of the diagram
@@ -23,12 +29,12 @@ export type ReactLikeC4Props<
    *
    * @default true
    */
-  keepAspectRatio?: boolean | undefined
+  keepAspectRatio?: boolean | undefined;
 
   /**
    * By default determined by the user's system preferences.
    */
-  colorScheme?: 'light' | 'dark' | undefined
+  colorScheme?: "light" | "dark" | undefined;
 
   /**
    * LikeC4 views are using 'IBM Plex Sans' font.
@@ -37,41 +43,33 @@ export type ReactLikeC4Props<
    *
    * @default true
    */
-  injectFontCss?: boolean | undefined
+  injectFontCss?: boolean | undefined;
 
-  style?: CSSProperties | undefined
+  style?: CSSProperties | undefined;
 
-  where?: WhereOperator<Tag, Kind> | undefined
+  where?: WhereOperator<Tag, Kind> | undefined;
 
-  onNavigateTo?: OnNavigateTo<ViewId> | undefined
+  onNavigateTo?: OnNavigateTo<ViewId> | undefined;
 
-  mantineTheme?: any
+  mantineTheme?: any;
 
   /** Function to generate nonce attribute added to all generated `<style />` tags */
-  styleNonce?: string | (() => string) | undefined
-}
+  styleNonce?: string | (() => string) | undefined;
+};
 
-export function ReactLikeC4<
-  ViewId extends string = string,
-  Tag = string,
-  Kind = string,
->({
+export function ReactLikeC4<ViewId extends string = string, Tag = string, Kind = string>({
   viewId,
   ...props
 }: ReactLikeC4Props<ViewId, Tag, Kind>) {
-  const likec4model = useLikeC4Model()
-  const view = likec4model?.findView(viewId)
+  const likec4model = useLikeC4Model();
+  const view = likec4model?.findView(viewId);
 
   if (!likec4model) {
-    return (
-      <ErrorMessage>
-        LikeC4Model not found. Make sure you have LikeC4ModelProvider.
-      </ErrorMessage>
-    )
+    return <ErrorMessage>LikeC4Model not found. Make sure you have LikeC4ModelProvider.</ErrorMessage>;
   }
 
   if (!view) {
-    return <ViewNotFound viewId={viewId} />
+    return <ViewNotFound viewId={viewId} />;
   }
 
   if (!view.isDiagram()) {
@@ -79,15 +77,15 @@ export function ReactLikeC4<
       <ErrorMessage>
         LikeC4Model is not layouted. Make sure you have LikeC4ModelProvider with layouted model.
       </ErrorMessage>
-    )
+    );
   }
 
-  return <ReactLikeC4Inner view={view.$view} {...props} />
+  return <ReactLikeC4Inner view={view.$view} {...props} />;
 }
 
-type ReactLikeC4InnerProps = Omit<ReactLikeC4Props<any, any, any>, 'viewId'> & {
-  view: DiagramView
-}
+type ReactLikeC4InnerProps = Omit<ReactLikeC4Props<any, any, any>, "viewId"> & {
+  view: DiagramView;
+};
 export function ReactLikeC4Inner({
   className,
   view,
@@ -96,37 +94,33 @@ export function ReactLikeC4Inner({
   keepAspectRatio = true,
   showNotations = true,
   onNavigateTo,
-  background = 'transparent',
+  background = "transparent",
   style,
   mantineTheme,
   styleNonce,
   ...props
 }: ReactLikeC4InnerProps) {
-  const colorScheme = useColorScheme(explicitColorScheme)
+  const colorScheme = useColorScheme(explicitColorScheme);
 
-  const [shadowRootProps, cssstyle] = useShadowRootStyle(keepAspectRatio, view)
+  const [shadowRootProps, cssstyle] = useShadowRootStyle(keepAspectRatio, view);
 
-  const notations = view.notation?.elements ?? []
-  const hasNotations = notations.length > 0
+  const notations = view.notation?.elements ?? [];
+  const hasNotations = notations.length > 0;
 
-  let nonce
+  let nonce;
   if (isString(styleNonce)) {
-    nonce = styleNonce
+    nonce = styleNonce;
   } else if (isFunction(styleNonce)) {
-    nonce = styleNonce()
+    nonce = styleNonce();
   }
 
   return (
     <>
-      <style
-        type="text/css"
-        nonce={nonce}
-        dangerouslySetInnerHTML={{ __html: cssstyle }}
-      />
+      <style type="text/css" nonce={nonce} dangerouslySetInnerHTML={{ __html: cssstyle }} />
       <ShadowRoot
         {...shadowRootProps}
         injectFontCss={injectFontCss}
-        className={clsx('likec4-view', className)}
+        className={clsx("likec4-view", className)}
         style={style}
         styleNonce={styleNonce}
       >
@@ -136,16 +130,26 @@ export function ReactLikeC4Inner({
           className={clsx(cssLikeC4View)}
           styleNonce={styleNonce}
         >
-          <LikeC4Diagram
-            view={view as any}
-            showNotations={showNotations && hasNotations}
-            onNavigateTo={onNavigateTo as any}
-            background={background}
-            {...props}
-          />
+          {/* Doesn't work */}
+          {/* <LikeC4Diagram /> */}
+
+          {/* Doesn't work */}
+          {/* <LikeC4DiagramTest /> */}
+
+          {/* Works */}
+          <LikeC4DiagramInline />
         </ShadowRootMantineProvider>
       </ShadowRoot>
     </>
-  )
+  );
 }
-ReactLikeC4.displayName = 'GenericReactLikeC4'
+ReactLikeC4.displayName = "GenericReactLikeC4";
+
+export function LikeC4DiagramInline() {
+  const context = useContext(MantineContext);
+
+  // should not be null
+  console.log(context);
+
+  return "context";
+}
