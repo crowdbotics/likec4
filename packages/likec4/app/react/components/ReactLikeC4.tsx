@@ -5,6 +5,7 @@ import {
   useLikeC4Model,
   LikeC4DiagramTest,
   LikeC4Diagram as LikeC4DiagramReal,
+  LikeC4Diagram,
 } from "@likec4/diagram";
 import clsx from "clsx";
 import { useContext, type CSSProperties } from "react";
@@ -130,26 +131,16 @@ export function ReactLikeC4Inner({
           className={clsx(cssLikeC4View)}
           styleNonce={styleNonce}
         >
-          {/* Doesn't work */}
-          {/* <LikeC4Diagram /> */}
-
-          {/* Doesn't work */}
-          {/* <LikeC4DiagramTest /> */}
-
-          {/* Works */}
-          <LikeC4DiagramInline />
+          <LikeC4Diagram
+            view={view as any}
+            showNotations={showNotations && hasNotations}
+            onNavigateTo={onNavigateTo as any}
+            background={background}
+            {...props}
+          />
         </ShadowRootMantineProvider>
       </ShadowRoot>
     </>
   );
 }
 ReactLikeC4.displayName = "GenericReactLikeC4";
-
-export function LikeC4DiagramInline() {
-  const context = useContext(MantineContext);
-
-  // should not be null
-  console.log(context);
-
-  return "context";
-}
