@@ -6,7 +6,7 @@ import {
   LikeC4ModelProvider as GenericLikeC4ModelProvider,
   LikeC4View as GenericLikeC4View,
   ReactLikeC4 as GenericReactLikeC4,
-} from 'likec4/react'
+} from '@crowdbotics/likec4/react'
 import { type PropsWithChildren } from 'react'
 import { Icons } from 'virtual:likec4/icons'
 import { likeC4Model, LikeC4Views, useLikeC4Model } from 'virtual:likec4/model'
