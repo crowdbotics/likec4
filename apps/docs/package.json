@@ -39,10 +39,10 @@
     "typescript": "^5.7.3"
   },
   "devDependencies": {
+    "@crowdbotics/likec4": "workspace:*",
     "@types/picomatch": "^2.3.4",
     "@types/react": "19.0.8",
     "@types/react-dom": "19.0.3",
-    "likec4": "@crowdbotics/likec4",
     "npm-run-all2": "^7.0.1",
     "tsx": "~4.19.2"
   }
