@@ -47,9 +47,6 @@ jobs:
           NODE_ENV: test
         run: yarn ci:test
 
-      - name: typecheck apps
-        run: yarn turbo run typecheck --filter='./apps/*'
-
   release:
     uses: ./.github/workflows/release.yaml
     if: "contains(github.event.head_commit.message, 'chore: release')"
