@@ -29,7 +29,7 @@
     "@types/react-dom": "^18.2.0",
     "@vitejs/plugin-react-swc": "3.7.0",
     "framer-motion": "^11.1.7",
-    "likec4": "workspace:*",
+    "@crowdbotics/likec4": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tilg": "^0.1.1",
