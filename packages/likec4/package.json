@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/likec4/likec4.git",
+    "url": "git+https://github.com/crowdbotics/likec4.git",
     "directory": "packages/likec4"
   },
   "engines": {
     "node": ">=20"
   },
   "engineStrict": true,
-  "bugs": "https://github.com/likec4/likec4/issues",
+  "bugs": "https://github.com/crowdbotics/likec4/issues",
   "type": "module",
   "bin": "./bin/likec4.mjs",
   "exports": {
