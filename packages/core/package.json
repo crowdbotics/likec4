@@ -104,8 +104,7 @@
     }
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org",
-    "access": "public"
+    "@crowdbotics:registry": "https://npm.pkg.github.com"
   },
   "dependencies": {
     "type-fest": "4.28.1"

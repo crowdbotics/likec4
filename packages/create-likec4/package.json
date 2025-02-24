@@ -20,8 +20,7 @@
   },
   "bugs": "https://github.com/crowdbotics/likec4/issues",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org",
-    "access": "public"
+    "@crowdbotics:registry": "https://npm.pkg.github.com"
   },
   "type": "module",
   "scripts": {

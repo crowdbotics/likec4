@@ -70,8 +70,7 @@
     "./bundled": "./dist/bundled.mjs"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org",
-    "access": "public"
+    "@crowdbotics:registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
