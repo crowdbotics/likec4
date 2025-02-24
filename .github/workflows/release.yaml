@@ -27,6 +27,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
           ref: ${{ github.ref }}
+          registry-url: "https://npm.pkg.github.com"
 
       - name: bootstrap
         uses: ./.github/actions/bootstrap
@@ -40,6 +41,7 @@ jobs:
         run: yarn shipjs trigger
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Let's manually update the package version for now
       # - name: "Automated Version Bump"
