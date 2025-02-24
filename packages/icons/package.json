@@ -6,10 +6,10 @@
   "author": "Denis Davydkov <denis@davydkov.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/likec4/likec4.git",
+    "url": "git+https://github.com/crowdbotics/likec4.git",
     "directory": "packages/icons"
   },
-  "bugs": "https://github.com/likec4/likec4/issues",
+  "bugs": "https://github.com/crowdbotics/likec4/issues",
   "type": "module",
   "sideEffects": false,
   "exports": {
