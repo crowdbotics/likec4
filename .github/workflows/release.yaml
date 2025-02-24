@@ -31,60 +31,61 @@ jobs:
       - name: bootstrap
         uses: ./.github/actions/bootstrap
 
-      # - name: configure git user
-      #   run: |
-      #     git config user.name 'CB GitHub Actions'"
-      #     git config user.email 'curtis@crowdbotics.com'
-
-      # - name: release
-      #   run: yarn shipjs trigger
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-      - name: "Automated Version Bump"
+      - name: configure git user
         run: |
-          yarn version --patch --no-git-tag-version
-          git config user.name 'CB GitHub Actions'
+          git config user.name 'CB GitHub Actions'"
           git config user.email 'curtis@crowdbotics.com'
-          git add package.json
-          git commit -m "Package Deploy #${{ github.run_number }}: Upgrading package version [skip actions]"
-          git push
+
+      - name: release
+        run: yarn shipjs trigger
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Let's manually update the package version for now
+      # - name: "Automated Version Bump"
+      #   run: |
+      #     yarn version --patch --no-git-tag-version
+      #     git config user.name 'CB GitHub Actions'
+      #     git config user.email 'curtis@crowdbotics.com'
+      #     git add package.json
+      #     git commit -m "Package Deploy #${{ github.run_number }}: Upgrading package version [skip actions]"
+      #     git push
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # - name: Test
       #   run: yarn test
       #   env:
       #     CI: true
 
-      - name: "Determine Tag"
-        run: 'echo "RELEASE_TAG=$(cat package.json | jq -r ''.version'')" >> $GITHUB_ENV'
+      # - name: "Determine Tag"
+      #   run: 'echo "RELEASE_TAG=$(cat package.json | jq -r ''.version'')" >> $GITHUB_ENV'
 
-      - name: "Create Release"
-        uses: "actions/github-script@v6"
-        with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
-          script: |
-            try {
-              const response = await github.rest.repos.createRelease({
-                draft: false,
-                generate_release_notes: true,
-                name: process.env.RELEASE_TAG,
-                owner: context.repo.owner,
-                prerelease: false,
-                repo: context.repo.repo,
-                tag_name: process.env.RELEASE_TAG,
-              });
-              core.exportVariable('RELEASE_ID', response.data.id);
-              core.exportVariable('RELEASE_UPLOAD_URL', response.data.upload_url);
-            } catch (error) {
-              core.setFailed(error.message);
-            }
+      # - name: "Create Release"
+      #   uses: "actions/github-script@v6"
+      #   with:
+      #     github-token: "${{ secrets.GITHUB_TOKEN }}"
+      #     script: |
+      #       try {
+      #         const response = await github.rest.repos.createRelease({
+      #           draft: false,
+      #           generate_release_notes: true,
+      #           name: process.env.RELEASE_TAG,
+      #           owner: context.repo.owner,
+      #           prerelease: false,
+      #           repo: context.repo.repo,
+      #           tag_name: process.env.RELEASE_TAG,
+      #         });
+      #         core.exportVariable('RELEASE_ID', response.data.id);
+      #         core.exportVariable('RELEASE_UPLOAD_URL', response.data.upload_url);
+      #       } catch (error) {
+      #         core.setFailed(error.message);
+      #       }
 
-      - name: Build Package
-        run: yarn build
+      # - name: Build Package
+      #   run: yarn build
 
-      - name: Publish Package
-        run: yarn publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      # - name: Publish Package
+      #   run: yarn publish
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
