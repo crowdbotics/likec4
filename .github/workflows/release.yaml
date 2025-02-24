@@ -4,8 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      # - crowdbotics
-    - feature/deploy-package
+    - crowdbotics
 
 permissions:
   actions: write
