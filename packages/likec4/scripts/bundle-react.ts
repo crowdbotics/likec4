@@ -92,6 +92,7 @@ export async function buildReact(_isDev = false) {
           'likec4/model',
           /@likec4\/core.*/,
           '@emotion/is-prop-valid', // dev-only import from framer-motion
+          '@mantine/core'
         ],
         plugins: [
           shadowStyle(),

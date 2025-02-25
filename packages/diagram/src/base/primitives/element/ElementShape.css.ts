@@ -108,21 +108,12 @@ export const shapeSvg = style([shapeBase, {
   transition: `fill 120ms linear, filter 130ms ${easings.inOut}`,
   transitionDelay: '0ms',
   vars: {
-    [filterShadow]: `
-      drop-shadow(0 2px 1px rgba(0, 0, 0, 0.21))
-      drop-shadow(0 1px 1px color-mix(in srgb, ${vars.element.stroke} 40%, transparent))
-      drop-shadow(0 5px 3px rgba(0, 0, 0, 0.1))
-    `,
+    [filterShadow]: `none`,
   },
   selectors: {
     [`:where([data-hovered='true']) &`]: {
       vars: {
-        [filterShadow]: `
-        drop-shadow(0 2px 1px rgba(0, 0, 0, 0.25))
-        drop-shadow(0 8px 3px rgba(0, 0, 0, 0.1))
-        drop-shadow(0 10px 10px rgba(0, 0, 0, 0.05))
-
-        `,
+        [filterShadow]: `none`,
       },
     },
     [`:where(.react-flow__node.selected, .react-flow__node:focus-visible, ${container}:focus-visible) &`]: {

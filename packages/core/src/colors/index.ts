@@ -10,6 +10,48 @@ export const defaultTheme: LikeC4Theme = {
   shadow: '#0a0a0a'
 }
 
+export const crowdboticsTheme: LikeC4Theme = {
+  elements: {
+    ...ElementColors,
+    primary: {
+      ...ElementColors.primary,
+      fill: '#358BD5',
+      stroke: '#0060B3',
+    },
+    secondary: {
+      ...ElementColors.secondary,
+      fill: '#E3F2FC',
+      stroke: '#94C4ED',
+      hiContrast: '#0060B3',
+      loContrast: '#0060B3'
+    },
+    muted: {
+      ...ElementColors.muted,
+      fill: '#ECEEF8',
+      stroke: '#C9CFE8',
+      hiContrast: '#14161F',
+      loContrast: '#14161F'
+    },
+    green: {
+      ...ElementColors.green,
+      fill: '#28bb52',
+      stroke: '#a6efbb',
+    }
+  },
+  relationships: {
+    ...RelationshipColors,
+    gray: {
+      ...RelationshipColors.gray,
+      lineColor: '#C9CFE8',
+      labelColor: '#14161F',
+      // @ts-expect-error
+      labelBgColor: 'transparent',
+    }
+  },
+  font: 'Arial',
+  shadow: '#0a0a0a'
+}
+
 export function computeColorValues(color: HexColorLiteral): ThemeColorValues {
   if (color.match(/^#([0-9a-f]{3}){1,2}$/i)) {
     const colors = generateColors(color)

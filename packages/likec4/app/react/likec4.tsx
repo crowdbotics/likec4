@@ -1,5 +1,3 @@
-import type { LikeC4Model } from '@likec4/core/model'
-import type { DiagramView, ViewId } from '@likec4/core/types'
 import {
   type LikeC4ViewProps,
   type ReactLikeC4Props as GenericReactLikeC4Props,
@@ -7,6 +5,8 @@ import {
   LikeC4View as GenericLikeC4View,
   ReactLikeC4 as GenericReactLikeC4,
 } from '@crowdbotics/likec4/react'
+import type { LikeC4Model } from '@likec4/core/model'
+import type { DiagramView, ViewId } from '@likec4/core/types'
 import { type PropsWithChildren } from 'react'
 import { Icons } from 'virtual:likec4/icons'
 import { likeC4Model, LikeC4Views, useLikeC4Model } from 'virtual:likec4/model'
