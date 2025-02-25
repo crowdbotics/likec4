@@ -1,3 +1,13 @@
+## 1.20.3 (2025-02-24)
+
+
+### Bug Fixes
+
+* update publish as github ([c027eca](https://github.com/crowdbotics/likec4/commit/c027eca57b31f771047779dbcec9d4ae11922693))
+* workflow with shipjs ([daa6cca](https://github.com/crowdbotics/likec4/commit/daa6cca7b36be6adaab38fca0243ab62f7240727))
+
+
+
 ## [1.20.2](https://github.com/likec4/likec4/compare/v1.20.1...v1.20.2) (2025-02-01)
 
 ### Improvements

@@ -3,9 +3,9 @@ name: main
 on:
   push:
     branches:
-      - 'main'
+      - "crowdbotics"
     tags-ignore:
-      - '**'
+      - "**"
 
 permissions:
   actions: write
@@ -47,39 +47,10 @@ jobs:
           NODE_ENV: test
         run: yarn ci:test
 
-      - name: typecheck apps
-        run:
-          yarn turbo run typecheck --filter='./apps/*'
-
   release:
     uses: ./.github/workflows/release.yaml
     if: "contains(github.event.head_commit.message, 'chore: release')"
     needs: build
     concurrency:
       group: ${{ github.workflow }}-release
-    secrets: inherit
-
-  vscode:
-    uses: ./.github/workflows/vscode.yaml
-    if: "contains(github.event.head_commit.message, 'chore: release')"
-    needs: build
-    concurrency:
-      group: ${{ github.workflow }}-vscode
-    secrets: inherit
-
-  playground:
-    needs: build
-    name: playground.likec4.dev
-    uses: ./.github/workflows/playground.yaml
-    secrets: inherit
-
-  docs:
-    needs: build
-    name: docs.likec4.dev
-    uses: ./.github/workflows/docs.yaml
-    secrets: inherit
-
-  e2e:
-    uses: ./.github/workflows/e2e.yaml
-    needs: build
     secrets: inherit

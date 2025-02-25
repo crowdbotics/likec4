@@ -1,6 +1,6 @@
 {
-  "name": "likec4",
-  "version": "1.20.2",
+  "name": "@crowdbotics/likec4",
+  "version": "1.20.3",
   "license": "MIT",
   "homepage": "https://likec4.dev",
   "author": "Denis Davydkov <denis@davydkov.com>",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/likec4/likec4.git",
+    "url": "git+https://github.com/crowdbotics/likec4.git",
     "directory": "packages/likec4"
   },
   "engines": {
     "node": ">=20"
   },
   "engineStrict": true,
-  "bugs": "https://github.com/likec4/likec4/issues",
+  "bugs": "https://github.com/crowdbotics/likec4/issues",
   "type": "module",
   "bin": "./bin/likec4.mjs",
   "exports": {
@@ -65,8 +65,7 @@
     }
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org",
-    "access": "public"
+    "@crowdbotics:registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "turbo-build": "turbo run build --log-prefix=none --log-order=grouped",
