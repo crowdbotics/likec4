@@ -7,13 +7,13 @@ module.exports = {
       'apps/*'
     ],
     packagesToPublish: [
-      // 'packages/core',
-      // 'packages/log',
-      // 'packages/icons',
-      // 'packages/diagram',
-      // 'packages/language-server',
-      // 'packages/layouts',
-      // 'packages/create-likec4',
+      'packages/core',
+      'packages/log',
+      'packages/icons',
+      'packages/diagram',
+      'packages/language-server',
+      'packages/layouts',
+      'packages/create-likec4',
       'packages/likec4'
     ]
   },
