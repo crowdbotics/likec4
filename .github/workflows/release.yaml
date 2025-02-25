@@ -4,13 +4,14 @@ on:
   workflow_dispatch:
   push:
     branches:
-    - crowdbotics
+      - crowdbotics
 
 permissions:
   actions: write
   checks: write
   contents: write
   statuses: write
+  packages: write
 
 env:
   NODE_ENV: production
