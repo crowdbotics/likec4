@@ -22,17 +22,17 @@ digraph {
     fontname = "Arial";
     fontsize = 14;
     penwidth = 2;
-    color = "#6E6E6E";
-    fontcolor = "#C6C6C6";
+    color = "#C9CFE8";
+    fontcolor = "#14161F";
   ];
   node [
     fontname = "Arial";
     shape = "rect";
     width = 4.445;
     height = 2.5;
-    fillcolor = "#3b82f6";
+    fillcolor = "#358BD5";
     fontcolor = "#eff6ff";
-    color = "#2563eb";
+    color = "#0060B3";
     style = "filled";
     penwidth = 0;
   ];
@@ -76,8 +76,8 @@ digraph {
     likec4_id = "z1";
     likec4_level = 0;
     likec4_depth = 2;
-    fillcolor = "#1a468d";
-    color = "#1c3979";
+    fillcolor = "#254c6d";
+    color = "#0c3456";
     style = "filled";
     margin = 50;
     label = <<FONT POINT-SIZE="11" COLOR="#bfdbfeb3"><B>Z1</B></FONT>>;
@@ -86,8 +86,8 @@ digraph {
       likec4_id = "z1.s1";
       likec4_level = 1;
       likec4_depth = 1;
-      fillcolor = "#194b9e";
-      color = "#1b3d88";
+      fillcolor = "#26537a";
+      color = "#0b3961";
       style = "filled";
       margin = 50;
       label = <<FONT POINT-SIZE="11" COLOR="#bfdbfeb3"><B>S1</B></FONT>>;
@@ -98,8 +98,8 @@ digraph {
       likec4_id = "z1.s2";
       likec4_level = 1;
       likec4_depth = 1;
-      fillcolor = "#194b9e";
-      color = "#1b3d88";
+      fillcolor = "#26537a";
+      color = "#0b3961";
       style = "filled";
       margin = 50;
       label = <<FONT POINT-SIZE="11" COLOR="#bfdbfeb3"><B>S2</B></FONT>>;
@@ -120,33 +120,33 @@ digraph {
   "client" -> "ui" [
     likec4_id = "7dqxgw";
     style = "dashed";
-    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="#18191bA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">uses</FONT></TD></TR></TABLE>>;
+    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="transparentA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">uses</FONT></TD></TR></TABLE>>;
   ];
   "client" -> "ui_1" [
     likec4_id = "7drqs3";
     style = "dashed";
-    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="#18191bA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">uses</FONT></TD></TR></TABLE>>;
+    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="transparentA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">uses</FONT></TD></TR></TABLE>>;
   ];
   "ui" -> "api" [
     likec4_id = "1tp0394";
     style = "dashed";
     weight = 3;
-    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="#18191bA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">fetches</FONT></TD></TR><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="12">[ REST ]</FONT></TD></TR></TABLE>>;
+    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="transparentA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">fetches</FONT></TD></TR><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="12">[ REST ]</FONT></TD></TR></TABLE>>;
   ];
   "ui_1" -> "api_1" [
     likec4_id = "ugfmg";
     style = "dashed";
     weight = 3;
-    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="#18191bA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">fetches</FONT></TD></TR><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="12">[ REST ]</FONT></TD></TR></TABLE>>;
+    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="transparentA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">fetches</FONT></TD></TR><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="12">[ REST ]</FONT></TD></TR></TABLE>>;
   ];
   "api" -> "db" [
     likec4_id = "1ll2ewe";
     style = "dashed";
-    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="#18191bA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">very very very long title that should be<BR/>wrapped to multiple lines</FONT></TD></TR></TABLE>>;
+    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="transparentA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">very very very long title that should be<BR/>wrapped to multiple lines</FONT></TD></TR></TABLE>>;
   ];
   "api_1" -> "db" [
     likec4_id = "yziy5";
     style = "dashed";
-    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="#18191bA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">very very very long title that should be<BR/>wrapped to multiple lines</FONT></TD></TR></TABLE>>;
+    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="transparentA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">very very very long title that should be<BR/>wrapped to multiple lines</FONT></TD></TR></TABLE>>;
   ];
 }

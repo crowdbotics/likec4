@@ -21,17 +21,17 @@ digraph {
     fontname = "Arial";
     fontsize = 14;
     penwidth = 2;
-    color = "#6E6E6E";
-    fontcolor = "#C6C6C6";
+    color = "#C9CFE8";
+    fontcolor = "#14161F";
   ];
   node [
     fontname = "Arial";
     shape = "rect";
     width = 4.445;
     height = 2.5;
-    fillcolor = "#3b82f6";
+    fillcolor = "#358BD5";
     fontcolor = "#eff6ff";
-    color = "#2563eb";
+    color = "#0060B3";
     style = "filled";
     penwidth = 0;
   ];
@@ -87,8 +87,8 @@ digraph {
     likec4_id = "cloud";
     likec4_level = 0;
     likec4_depth = 2;
-    fillcolor = "#1a468d";
-    color = "#1c3979";
+    fillcolor = "#254c6d";
+    color = "#0c3456";
     style = "filled";
     margin = 40;
     label = <<FONT POINT-SIZE="11" COLOR="#bfdbfeb3"><B>CLOUD</B></FONT>>;
@@ -98,8 +98,8 @@ digraph {
       likec4_id = "cloud.backend";
       likec4_level = 1;
       likec4_depth = 1;
-      fillcolor = "#194b9e";
-      color = "#1b3d88";
+      fillcolor = "#26537a";
+      color = "#0b3961";
       style = "filled";
       margin = 40;
       label = <<FONT POINT-SIZE="11" COLOR="#bfdbfeb3"><B>BACKEND</B></FONT>>;
@@ -110,27 +110,27 @@ digraph {
   "customer" -> "dashboard" [
     likec4_id = "customer:cloud.frontend.dashboard";
     style = "dashed";
-    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="#18191bA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">opens in browser</FONT></TD></TR></TABLE>>;
+    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="transparentA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">opens in browser</FONT></TD></TR></TABLE>>;
   ];
   "support" -> "adminpanel" [
     likec4_id = "support:cloud.frontend.adminPanel";
     style = "dashed";
-    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="#18191bA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">manages</FONT></TD></TR></TABLE>>;
+    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="transparentA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">manages</FONT></TD></TR></TABLE>>;
   ];
   "adminpanel" -> "graphql" [
     likec4_id = "cloud.frontend.adminPanel:cloud.backend.graphql";
     style = "dashed";
-    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="#18191bA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">fetches data in zero trust network with<BR/>sso authentification</FONT></TD></TR></TABLE>>;
+    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="transparentA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">fetches data in zero trust network with<BR/>sso authentification</FONT></TD></TR></TABLE>>;
   ];
   "dashboard" -> "graphql" [
     likec4_id = "cloud.frontend.dashboard:cloud.backend.graphql";
     style = "dashed";
-    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="#18191bA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">fetches data</FONT></TD></TR></TABLE>>;
+    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="transparentA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">fetches data</FONT></TD></TR></TABLE>>;
   ];
   "storage" -> "amazon" [
     likec4_id = "cloud.backend.storage:amazon";
     style = "dashed";
-    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="#18191bA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">persists artifacts</FONT></TD></TR></TABLE>>;
+    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="transparentA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">persists artifacts</FONT></TD></TR></TABLE>>;
     arrowhead = "normal";
     arrowtail = "odiamond";
     dir = "both";

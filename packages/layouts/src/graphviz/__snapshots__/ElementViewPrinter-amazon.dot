@@ -21,17 +21,17 @@ digraph {
     fontname = "Arial";
     fontsize = 14;
     penwidth = 2;
-    color = "#6E6E6E";
-    fontcolor = "#C6C6C6";
+    color = "#C9CFE8";
+    fontcolor = "#14161F";
   ];
   node [
     fontname = "Arial";
     shape = "rect";
     width = 4.445;
     height = 2.5;
-    fillcolor = "#3b82f6";
+    fillcolor = "#358BD5";
     fontcolor = "#eff6ff";
-    color = "#2563eb";
+    color = "#0060B3";
     style = "filled";
     penwidth = 0;
   ];
@@ -51,8 +51,8 @@ digraph {
     likec4_id = "cloud";
     likec4_level = 0;
     likec4_depth = 1;
-    fillcolor = "#194b9e";
-    color = "#1b3d88";
+    fillcolor = "#26537a";
+    color = "#0b3961";
     style = "filled";
     margin = 32;
     label = <<FONT POINT-SIZE="11" COLOR="#bfdbfeb3"><B>CLOUD</B></FONT>>;
@@ -62,8 +62,8 @@ digraph {
     likec4_id = "amazon";
     likec4_level = 0;
     likec4_depth = 1;
-    fillcolor = "#194b9e";
-    color = "#1b3d88";
+    fillcolor = "#26537a";
+    color = "#0b3961";
     style = "filled";
     margin = 32;
     label = <<FONT POINT-SIZE="11" COLOR="#bfdbfeb3"><B>AMAZON</B></FONT>>;
@@ -73,7 +73,7 @@ digraph {
     likec4_id = "cloud.backend:amazon.s3";
     style = "dashed";
     weight = 3;
-    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="#18191bA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">persists artifacts</FONT></TD></TR></TABLE>>;
+    label = <<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" BGCOLOR="transparentA0"><TR><TD ALIGN="TEXT" BALIGN="LEFT"><FONT POINT-SIZE="14">persists artifacts</FONT></TD></TR></TABLE>>;
     arrowhead = "normal";
     arrowtail = "odiamond";
     dir = "both";
