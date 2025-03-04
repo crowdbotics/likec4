@@ -1,6 +1,8 @@
-import { ReactFlowProvider as XYFlowProvider } from "@xyflow/react";
-import { useContext, useRef } from "react";
-import { isEmpty } from "remeda";
+import { MantineContext } from '@mantine/core'
+import { ReactFlowProvider as XYFlowProvider } from '@xyflow/react'
+import { useContext, useRef } from 'react'
+import * as React from 'react'
+import { isEmpty } from 'remeda'
 import {
   DiagramEventHandlers,
   DiagramFeatures,
@@ -8,19 +10,17 @@ import {
   FramerMotionConfig,
   IconRendererProvider,
   RootContainer,
-} from "./context";
-import { LikeC4CustomColors } from "./LikeC4CustomColors";
-import { type LikeC4DiagramEventHandlers, type LikeC4DiagramProperties } from "./LikeC4Diagram.props";
-import { DiagramActor } from "./likec4diagram/DiagramActor";
-import { DiagramUI } from "./likec4diagram/DiagramUI";
-import type { Types } from "./likec4diagram/types";
-import { useViewToNodesEdges } from "./likec4diagram/useViewToNodesEdges";
-import { LikeC4DiagramXYFlow } from "./likec4diagram/XYFlow";
-import { useLikeC4Model } from "./likec4model";
-import { MantineContext } from "@mantine/core";
-import * as React from "react";
+} from './context'
+import { LikeC4CustomColors } from './LikeC4CustomColors'
+import { type LikeC4DiagramEventHandlers, type LikeC4DiagramProperties } from './LikeC4Diagram.props'
+import { DiagramActor } from './likec4diagram/DiagramActor'
+import { DiagramUI } from './likec4diagram/DiagramUI'
+import type { Types } from './likec4diagram/types'
+import { useViewToNodesEdges } from './likec4diagram/useViewToNodesEdges'
+import { LikeC4DiagramXYFlow } from './likec4diagram/XYFlow'
+import { useLikeC4Model } from './likec4model'
 
-export type LikeC4DiagramProps = LikeC4DiagramProperties & LikeC4DiagramEventHandlers;
+export type LikeC4DiagramProps = LikeC4DiagramProperties & LikeC4DiagramEventHandlers
 export function LikeC4Diagram({
   view,
   className,
@@ -29,7 +29,7 @@ export function LikeC4Diagram({
   readonly = true,
   pannable = true,
   zoomable = true,
-  background = "dots",
+  background = 'dots',
   enableFocusMode = false,
   enableElementDetails = false,
   enableRelationshipDetails = enableElementDetails,
@@ -59,22 +59,24 @@ export function LikeC4Diagram({
   where,
   showNavigationButtons = !!onNavigateTo,
 }: LikeC4DiagramProps) {
-  const hasLikec4model = !!useLikeC4Model();
-  const initialRef = useRef<{
-    defaultNodes: Types.Node[];
-    defaultEdges: Types.Edge[];
-    initialWidth: number;
-    initialHeight: number;
-  }>(null);
+  const hasLikec4model = !!useLikeC4Model()
+  const initialRef = useRef<
+    {
+      defaultNodes: Types.Node[]
+      defaultEdges: Types.Edge[]
+      initialWidth: number
+      initialHeight: number
+    } | null
+  >(null)
 
   const xyNodesEdges = useViewToNodesEdges({
     view,
     where,
     nodesDraggable,
     nodesSelectable,
-  });
+  })
 
-  const isDynamicView = view.__ === "dynamic";
+  const isDynamicView = view.__ === 'dynamic'
 
   if (initialRef.current == null) {
     initialRef.current = {
@@ -82,7 +84,7 @@ export function LikeC4Diagram({
       defaultNodes: [],
       initialWidth: initialWidth ?? view.bounds.width,
       initialHeight: initialHeight ?? view.bounds.height,
-    };
+    }
   }
 
   return (
@@ -152,15 +154,15 @@ export function LikeC4Diagram({
         </IconRendererProvider>
       </FramerMotionConfig>
     </EnsureMantine>
-  );
+  )
 }
 
 export function LikeC4DiagramTest() {
-  const context = useContext(MantineContext);
+  const context = useContext(MantineContext)
 
   // should not be null
-  console.log(context);
-  console.log(React.version);
+  console.log(context)
+  console.log(React.version)
 
-  return "context";
+  return 'context'
 }
