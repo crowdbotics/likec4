@@ -30,10 +30,12 @@ export function RelationshipsBrowser({ actorRef }: RelationshipsBrowserProps) {
   // if (actorRef == null) {
   //   return null
   // }
-  const initialRef = useRef<{
-    initialNodes: Types.Node[]
-    initialEdges: Types.Edge[]
-  }>(null)
+  const initialRef = useRef<
+    {
+      initialNodes: Types.Node[]
+      initialEdges: Types.Edge[]
+    } | null
+  >(null)
 
   if (initialRef.current == null) {
     initialRef.current = {

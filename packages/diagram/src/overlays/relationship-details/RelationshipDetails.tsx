@@ -30,10 +30,12 @@ export function RelationshipDetails({ actorRef }: RelationshipDetailsProps) {
   // if (actorRef == null) {
   //   return null
   // }
-  const initialRef = useRef<{
-    defaultNodes: Types.Node[]
-    defaultEdges: Types.Edge[]
-  }>(null)
+  const initialRef = useRef<
+    {
+      defaultNodes: Types.Node[]
+      defaultEdges: Types.Edge[]
+    } | null
+  >(null)
 
   if (initialRef.current == null) {
     initialRef.current = {

@@ -15,12 +15,14 @@ type ExampleProps = {
 }
 
 export function Example({ view }: ExampleProps) {
-  const initialRef = useRef<{
-    defaultNodes: Types.Node[]
-    defaultEdges: Types.Edge[]
-    initialWidth: number
-    initialHeight: number
-  }>(null)
+  const initialRef = useRef<
+    {
+      defaultNodes: Types.Node[]
+      defaultEdges: Types.Edge[]
+      initialWidth: number
+      initialHeight: number
+    } | null
+  >(null)
 
   const {
     xynodes,

@@ -7,7 +7,7 @@ const useInspector: () => { inspect?: Observer<InspectionEvent> } =
   process.env.NODE_ENV === 'production'
     ? () => ({})
     : () => {
-      const inspectorRef = useRef<ReturnType<typeof createBrowserInspector>>(null)
+      const inspectorRef = useRef<ReturnType<typeof createBrowserInspector> | null>(null)
       if (!inspectorRef.current) {
         inspectorRef.current = createBrowserInspector({
           filter: (event) => {
