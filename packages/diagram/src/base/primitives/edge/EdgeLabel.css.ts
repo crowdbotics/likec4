@@ -125,6 +125,11 @@ export const edgeLabelText = style({
   fontSize: rem(14),
   lineHeight: 1.185,
   color: xyvars.edge.labelColor,
+  selectors: {
+    [`${whereDark} :where([data-likec4-color="gray"]) &`]: {
+      color: 'white',
+    },
+  },
 })
 
 export const edgeLabelTechnology = style({
