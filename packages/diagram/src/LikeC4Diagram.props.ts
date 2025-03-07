@@ -9,6 +9,7 @@ import type {
   WhereOperator,
 } from '@likec4/core'
 import type { MouseEvent as ReactMouseEvent, ReactNode } from 'react'
+import type { Actions } from './likec4diagram/state/machine'
 
 export type { WhereOperator }
 
@@ -210,6 +211,7 @@ export interface LikeC4DiagramEventHandlers {
   onEdgeContextMenu?: OnEdgeClick | null | undefined
   onCanvasClick?: OnCanvasClick | null | undefined
   onCanvasDblClick?: OnCanvasClick | null | undefined
+  handleAction?: (action: Actions, node: Node) => void | null | undefined
 
   // if set, will render a burger menu icon in the top left corner
   onBurgerMenuClick?: null | undefined | (() => void)

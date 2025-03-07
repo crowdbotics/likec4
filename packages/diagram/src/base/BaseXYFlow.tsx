@@ -48,17 +48,11 @@ export type BaseXYFlowProps<NodeType extends Base.Node, EdgeType extends Base.Ed
       | 'fitViewOptions'
     >,
     // Required props
-    | 'nodes'
-    | 'edges'
-    | 'onNodesChange'
-    | 'onEdgesChange'
+    'nodes' | 'edges' | 'onNodesChange' | 'onEdgesChange'
   >
 >
 
-export const BaseXYFlow = <
-  NodeType extends Base.Node,
-  EdgeType extends Base.Edge,
->({
+export const BaseXYFlow = <NodeType extends Base.Node, EdgeType extends Base.Edge>({
   nodes,
   edges,
   onEdgesChange,
@@ -101,12 +95,15 @@ export const BaseXYFlow = <
       maxZoom={zoomable ? MaxZoom : 1}
       minZoom={zoomable ? MinZoom : 1}
       fitView={fitView}
-      fitViewOptions={useMemo(() => ({
-        minZoom: MinZoom,
-        maxZoom: 1,
-        padding: fitViewPadding,
-        includeHiddenNodes: false,
-      }), [fitViewPadding])}
+      fitViewOptions={useMemo(
+        () => ({
+          minZoom: MinZoom,
+          maxZoom: 1,
+          padding: fitViewPadding,
+          includeHiddenNodes: false,
+        }),
+        [fitViewPadding],
+      )}
       preventScrolling={zoomable || pannable}
       defaultMarkerColor="var(--xy-edge-stroke)"
       noDragClassName="nodrag"
@@ -129,32 +126,40 @@ export const BaseXYFlow = <
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onNodeMouseEnter={useCallbackRef((_event, node) => {
-        onNodesChange([{
-          id: node.id,
-          type: 'replace',
-          item: Base.setHovered(node, true),
-        }])
+        onNodesChange([
+          {
+            id: node.id,
+            type: 'replace',
+            item: Base.setHovered(node, true),
+          },
+        ])
       })}
       onNodeMouseLeave={useCallbackRef((_event, node) => {
-        onNodesChange([{
-          id: node.id,
-          type: 'replace',
-          item: Base.setHovered(node, false),
-        }])
+        onNodesChange([
+          {
+            id: node.id,
+            type: 'replace',
+            item: Base.setHovered(node, false),
+          },
+        ])
       })}
       onEdgeMouseEnter={useCallbackRef((_event, edge) => {
-        onEdgesChange([{
-          id: edge.id,
-          type: 'replace',
-          item: Base.setHovered(edge, true),
-        }])
+        onEdgesChange([
+          {
+            id: edge.id,
+            type: 'replace',
+            item: Base.setHovered(edge, true),
+          },
+        ])
       })}
       onEdgeMouseLeave={useCallbackRef((_event, edge) => {
-        onEdgesChange([{
-          id: edge.id,
-          type: 'replace',
-          item: Base.setHovered(edge, false),
-        }])
+        onEdgesChange([
+          {
+            id: edge.id,
+            type: 'replace',
+            item: Base.setHovered(edge, false),
+          },
+        ])
       })}
       onNodeDoubleClick={stopPropagation}
       onEdgeDoubleClick={stopPropagation}
@@ -167,9 +172,7 @@ export const BaseXYFlow = <
   )
 }
 
-const BaseXYFlowInner = ({
-  onViewportResize,
-}: Pick<BaseXYFlowProps<any, any>, 'onViewportResize'>) => {
+const BaseXYFlowInner = ({ onViewportResize }: Pick<BaseXYFlowProps<any, any>, 'onViewportResize'>) => {
   const xyflowApi = useStoreApi()
 
   /**
@@ -188,20 +191,12 @@ const BaseXYFlowInner = ({
     },
   })
 
-  return (
-    <>
-      {onViewportResize && <ViewportResizeHanlder onViewportResize={onViewportResize} />}
-    </>
-  )
+  return <>{onViewportResize && <ViewportResizeHanlder onViewportResize={onViewportResize} />}</>
 }
 
 const selectDimensions = ({ width, height }: ReactFlowState) => ({ width, height })
 
-const ViewportResizeHanlder = ({
-  onViewportResize,
-}: {
-  onViewportResize: () => void
-}) => {
+const ViewportResizeHanlder = ({ onViewportResize }: { onViewportResize: () => void }) => {
   const { width, height } = useStore(selectDimensions)
   useUpdateEffect(onViewportResize, [width, height])
 

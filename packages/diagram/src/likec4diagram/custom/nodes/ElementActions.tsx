@@ -1,5 +1,5 @@
 import type { NodeId } from '@likec4/core'
-import { IconTransform, IconZoomScan } from '@tabler/icons-react'
+import { IconPlus, IconTransform, IconTrash, IconZoomScan } from '@tabler/icons-react'
 import { ElementActionButtons } from '../../../base/primitives'
 import type { NodeProps } from '../../../base/types'
 import { useEnabledFeature } from '../../../context'
@@ -34,6 +34,18 @@ export const ElementActions = (props: ElementActionsProps) => {
       },
     })
   }
+
+  buttons.push({
+    key: 'exclude',
+    icon: <IconTrash />,
+    onClick: (e) => {
+      e.stopPropagation()
+      e.preventDefault()
+      console.log(props)
+      diagram.handleAction('exclude', props)
+    },
+  })
+
   return (
     <ElementActionButtons
       buttons={buttons}

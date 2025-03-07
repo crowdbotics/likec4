@@ -4,6 +4,7 @@ import type { PartialDeep } from 'type-fest'
 import { useDiagramActor } from '../hooks/useDiagramActor'
 import type { OpenSourceParams } from '../LikeC4Diagram.props'
 import type { AlignmentMode } from '../likec4diagram/state/aligners'
+import type { Actions } from '../likec4diagram/state/machine'
 import type { Types } from '../likec4diagram/types'
 import { DiagramContext } from './useDiagramContext'
 
@@ -12,6 +13,9 @@ export function useDiagram() {
   const [, startTransition] = useTransition()
   return useMemo(() => ({
     send: actor.send,
+    handleAction: (action: Actions, node: Node) => {
+      actor.send({ type: 'handle.action', action, node })
+    },
     navigateTo: (viewId: ViewId, fromNode?: NodeId) => {
       startTransition(() => {
         actor.send({

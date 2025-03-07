@@ -19,6 +19,7 @@ const HandlerNames = [
   'onNodeContextMenu',
   'onChange',
   'onCanvasDblClick',
+  'handleAction',
 ] as const
 
 const DiagramEventHandlersContext = createContext<RequiredOrNull<LikeC4DiagramEventHandlers>>(

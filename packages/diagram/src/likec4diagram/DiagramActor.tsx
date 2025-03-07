@@ -14,7 +14,7 @@ import type { Types } from './types'
 type ActorContextInput = Omit<Input, 'xystore' | 'features'>
 
 export function DiagramActor({ input, children }: PropsWithChildren<{ input: ActorContextInput }>) {
-  const { onNavigateTo, onOpenSource, onChange } = useDiagramEventHandlers()
+  const { onNavigateTo, onOpenSource, onChange, handleAction } = useDiagramEventHandlers()
   const xystore = useStoreApi<Types.Node, Types.Edge>()
   // const inspector = useInspector()
   return (
@@ -32,6 +32,10 @@ export function DiagramActor({ input, children }: PropsWithChildren<{ input: Act
 
             'trigger:OpenSource': useCallbackRef((_, params) => {
               onOpenSource?.(params)
+            }),
+
+            'trigger:HandleAction': useCallbackRef((_, { action, node }) => {
+              handleAction?.(action, node)
             }),
           },
           actors: {

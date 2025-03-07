@@ -3,6 +3,7 @@ import { ReactFlowProvider as XYFlowProvider } from '@xyflow/react'
 import { useContext, useRef } from 'react'
 import * as React from 'react'
 import { isEmpty } from 'remeda'
+import { ColorSchemeToggle } from './ColorSchemeToggle'
 import {
   DiagramEventHandlers,
   DiagramFeatures,
@@ -15,12 +16,18 @@ import { LikeC4CustomColors } from './LikeC4CustomColors'
 import { type LikeC4DiagramEventHandlers, type LikeC4DiagramProperties } from './LikeC4Diagram.props'
 import { DiagramActor } from './likec4diagram/DiagramActor'
 import { DiagramUI } from './likec4diagram/DiagramUI'
+import type { Actions } from './likec4diagram/state/machine'
 import type { Types } from './likec4diagram/types'
 import { useViewToNodesEdges } from './likec4diagram/useViewToNodesEdges'
 import { LikeC4DiagramXYFlow } from './likec4diagram/XYFlow'
 import { useLikeC4Model } from './likec4model'
 
-export type LikeC4DiagramProps = LikeC4DiagramProperties & LikeC4DiagramEventHandlers
+export type LikeC4DiagramProps =
+  & LikeC4DiagramProperties
+  & LikeC4DiagramEventHandlers
+  & {
+    handleAction: (action: Actions, node: Node) => void
+  }
 export function LikeC4Diagram({
   view,
   className,
@@ -58,6 +65,7 @@ export function LikeC4Diagram({
   renderIcon,
   where,
   showNavigationButtons = !!onNavigateTo,
+  handleAction,
 }: LikeC4DiagramProps) {
   const hasLikec4model = !!useLikeC4Model()
   const initialRef = useRef<
@@ -124,6 +132,7 @@ export function LikeC4Diagram({
                 onNodeContextMenu,
                 onOpenSource,
                 onBurgerMenuClick,
+                handleAction,
               }}
             >
               <RootContainer className={className}>

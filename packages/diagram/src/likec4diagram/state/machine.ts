@@ -151,11 +151,13 @@ export type Events =
   | { type: 'update.features'; features: EnabledFeatures }
   | { type: 'fitDiagram'; duration?: number; bounds?: BBox }
   | ({ type: 'open.source' } & OpenSourceParams)
+  | ({ type: 'handle.action' } & { action: Actions; node: DiagramNode })
   | { type: 'open.elementDetails'; fqn: Fqn; fromNode?: NodeId | undefined }
   | { type: 'open.relationshipDetails'; edgeId: EdgeId }
   | { type: 'open.relationshipsBrowser'; fqn: Fqn }
   | { type: 'close.overlay' }
   | { type: 'navigate.to'; viewId: ViewId; fromNode?: NodeId | undefined }
+  | { type: 'handle.action'; action: Actions; node?: Node }
   | { type: 'navigate.back' }
   | { type: 'navigate.forward' }
   | { type: 'layout.align'; mode: AlignmentMode }
@@ -166,6 +168,8 @@ export type Events =
   | { type: 'walkthrough.start'; stepId?: StepEdgeId }
   | { type: 'walkthrough.step'; direction: 'next' | 'previous' }
   | { type: 'walkthrough.end' }
+
+export type Actions = 'exclude'
 
 export type ActionArg = { context: DiagramContext; event: Events }
 
@@ -225,6 +229,8 @@ export const diagramMachine = setup({
       // apply change
     },
     'trigger:OpenSource': (_, _params: OpenSourceParams) => {
+    },
+    'trigger:HandleAction': (_, _params: { action: Actions; node: Node }) => {
     },
 
     'xyflow:fitDiagram': ({ context }, params?: { duration?: number; bounds?: BBox }) => {
@@ -913,6 +919,15 @@ export const diagramMachine = setup({
       actions: {
         type: 'trigger:OpenSource',
         params: prop('event'),
+      },
+    },
+    'handle.action': {
+      actions: {
+        type: 'trigger:HandleAction',
+        params: ({ event }) => ({
+          action: event.action,
+          node: event.node,
+        }),
       },
     },
     'walkthrough.start': {

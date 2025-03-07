@@ -33,26 +33,15 @@ const equalsXYProps = (a: ReturnType<typeof selectXYProps>, b: ReturnType<typeof
   shallowEqual(a.nodes, b.nodes) &&
   shallowEqual(a.edges, b.edges)
 
-type Picked = EnforceOptional<
-  Pick<
-    LikeC4DiagramProperties,
-    | 'background'
-    | 'nodesDraggable'
-    | 'nodesSelectable'
-  >
->
+type Picked = EnforceOptional<Pick<LikeC4DiagramProperties, 'background' | 'nodesDraggable' | 'nodesSelectable'>>
 export type LikeC4DiagramXYFlowProps = Required<Picked>
 
 export const LikeC4DiagramXYFlow = ({ background, ...rest }: LikeC4DiagramXYFlowProps) => {
   const diagram = useDiagram()
-  const {
-    initialized,
-    nodes,
-    edges,
-    enableReadOnly,
-    enableFitView,
-    ...props
-  } = useDiagramContext(selectXYProps, equalsXYProps)
+  const { initialized, nodes, edges, enableReadOnly, enableFitView, ...props } = useDiagramContext(
+    selectXYProps,
+    equalsXYProps,
+  )
 
   const {
     onNodeContextMenu,
@@ -103,7 +92,7 @@ export const LikeC4DiagramXYFlow = ({ background, ...rest }: LikeC4DiagramXYFlow
         diagram.send({ type: 'xyflow.paneClick' })
         onCanvasClick?.(e as any)
       })}
-      onDoubleClick={useCallbackRef(e => {
+      onDoubleClick={useCallbackRef((e) => {
         e.stopPropagation()
         diagram.send({ type: 'xyflow.paneDblClick' })
         onCanvasDblClick?.(e as any)
@@ -115,7 +104,7 @@ export const LikeC4DiagramXYFlow = ({ background, ...rest }: LikeC4DiagramXYFlow
       onInit={useCallbackRef((instance) => {
         diagram.send({ type: 'xyflow.init', instance })
       })}
-      {...onNodeContextMenu && {
+      {...(onNodeContextMenu && {
         onNodeContextMenu: useCallbackRef((event, node) => {
           const diagramNode = nonNullable(
             diagram.findDiagramNode(node.id as NodeId),
@@ -123,8 +112,8 @@ export const LikeC4DiagramXYFlow = ({ background, ...rest }: LikeC4DiagramXYFlow
           )
           onNodeContextMenu(diagramNode, event)
         }),
-      }}
-      {...onEdgeContextMenu && {
+      })}
+      {...(onEdgeContextMenu && {
         onEdgeContextMenu: useCallbackRef((event, edge) => {
           const diagramEdge = nonNullable(
             diagram.findDiagramEdge(edge.id as EdgeId),
@@ -132,17 +121,18 @@ export const LikeC4DiagramXYFlow = ({ background, ...rest }: LikeC4DiagramXYFlow
           )
           onEdgeContextMenu(diagramEdge, event)
         }),
-      }}
-      {...onCanvasContextMenu && {
+      })}
+      {...(onCanvasContextMenu && {
         onPaneContextMenu: useCallbackRef((event) => {
           onCanvasContextMenu(event as any)
         }),
-      }}
-      {...enableFitView && {
+      })}
+      {...(enableFitView && {
         onViewportResize,
-      }}
+      })}
       {...(notReadOnly && rest.nodesDraggable && layoutConstraints)}
       {...props}
-      {...rest} />
+      {...rest}
+    />
   )
 }
