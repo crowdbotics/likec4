@@ -60,23 +60,9 @@ export const RelationshipEdge = customEdge<Types.RelationshipEdgeData>((props) =
   const sourceNode = nonNullable(useXYInternalNode(source)!, `source node ${source} not found`)
   const targetNode = nonNullable(useXYInternalNode(target)!, `target node ${target} not found`)
 
-  console.log('Source Node Positions:', {
-    absolute: sourceNode.internals.positionAbsolute,
-    data: sourceNode.data.position,
-    isSame: isSamePoint(sourceNode.internals.positionAbsolute, sourceNode.data.position),
-  })
-  console.log('Target Node Positions:', {
-    absolute: targetNode.internals.positionAbsolute,
-    data: targetNode.data.position,
-    isSame: isSamePoint(targetNode.internals.positionAbsolute, targetNode.data.position),
-  })
-  console.log('Control Points:', data.controlPoints)
-
   const isModified = isTruthy(data.controlPoints)
     || !isSamePoint(sourceNode.internals.positionAbsolute, sourceNode.data.position)
     || !isSamePoint(targetNode.internals.positionAbsolute, targetNode.data.position)
-
-  console.log('isModified:', isModified)
 
   let controlPoints = data.controlPoints ?? bezierControlPoints(props.data)
 
