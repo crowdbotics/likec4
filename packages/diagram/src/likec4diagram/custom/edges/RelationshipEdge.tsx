@@ -132,10 +132,8 @@ export const RelationshipEdge = customEdge<Types.RelationshipEdgeData>((props) =
     300,
   )
 
-  if (isModified || isControlPointDragging) {
-    labelX = labelPos.x
-    labelY = labelPos.y
-  }
+  labelX = labelPos.x
+  labelY = labelPos.y
 
   const onLmbControlPointerDown = (index: number, e: ReactPointerEvent<SVGCircleElement>, domNode: HTMLDivElement) => {
     const { addSelectedEdges } = xyflowStore.getState()
