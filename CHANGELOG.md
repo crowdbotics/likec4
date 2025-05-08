@@ -1,3 +1,7 @@
+## [1.20.8](https://github.com/crowdbotics/likec4/compare/v1.20.7...v1.20.8) (2025-05-08)
+
+
+
 ## [1.20.7](https://github.com/crowdbotics/likec4/compare/v1.20.6...v1.20.7) (2025-04-16)
 
 
